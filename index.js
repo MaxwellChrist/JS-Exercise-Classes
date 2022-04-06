@@ -69,7 +69,6 @@ Person1.eat("steak");
 Person1.poop();
 console.log(Person1.toString());
 
-
 /*
   TASK 2
     - Write a Car class whose constructor initializes `model` and `milesPerGallon`, from 2 arguments.
@@ -85,8 +84,37 @@ console.log(Person1.toString());
 */
 
 class Car {
-  
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons){
+    this.tank = this.tank + gallons
+  }
+  drive(distance){
+    const total = this.tank * this.milesPerGallon;
+    if (total > distance) {
+      this.odometer += distance;
+      this.tank -= (distance / this.milesPerGallon)
+    } else {
+      this.tank = 0;
+      this.odometer += total;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 }
+
+const Car1 = new Car("2015 Mazda MX-5", 29);
+Car1.fill(12);
+console.log(Car1.tank);
+Car1.drive(30);
+console.log(Car1.tank);
+Car1.drive(300);
+console.log(Car1.tank);
+console.log(Car1.drive(3000));
+console.log(Car1.tank);
 
 /*
   TASK 3
