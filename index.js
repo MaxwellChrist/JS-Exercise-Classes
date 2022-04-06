@@ -207,9 +207,38 @@ console.log(newInstructor.grade(Lamdasian1, "Classes"));
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
 
-class Student {
-   
+class Student extends Lambdasian{
+  constructor(attributes){
+    super(attributes);
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+  }
+  listSubjects(){
+    return `Loving ${this.favSubjects}`;
+  }
+  PRAssignment(subject){
+    return `${this.name} has submitted a PR for ${subject}`;
+  }
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`;
+  }
 }
+
+const Student1 = new Student({
+  name: "Megan",
+  age: 22,
+  location: "North Dakota",
+  previousBackground: "Real Estate",
+  className: "CP101",
+  favSubjects: ["JavaScript", "Java", "C++"]
+})
+
+console.log(Student1.speak());
+console.log(Student1.listSubjects());
+console.log(Student1.PRAssignment("ruby"));
+console.log(Student1.sprintChallenge("python"));
+
 
 /*
   TASK 6
