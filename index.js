@@ -239,7 +239,6 @@ console.log(Student1.listSubjects());
 console.log(Student1.PRAssignment("ruby"));
 console.log(Student1.sprintChallenge("python"));
 
-
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -254,9 +253,31 @@ console.log(Student1.sprintChallenge("python"));
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+   constructor(attributes){
+     super(attributes);
+     this.gradClassName = attributes.gradClassName;
+     this.favInstructor = attributes.favInstructor;
+   }
+   standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+   }
+   debugsCode(student, subject){
+     return `${this.name} debugs ${student.name}'s code on ${subject}`
+   }
 }
+
+const ProjectManager1 = new ProjectManager({
+  name: "Steve",
+  age: 49,
+  location: "North Dakota",
+  gradClassName: "Web301",
+  favInstructor: "Mr. Morgan",
+})
+
+console.log(ProjectManager1.speak());
+console.log(ProjectManager1.standUp("help"));
+console.log(ProjectManager1.debugsCode(Student1, "Prototypes"));
 
 /*
   STRETCH PROBLEM (no tests!)
